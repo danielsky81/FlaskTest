@@ -5,3 +5,11 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/register', methods=['POST'])
+def register():
+    name = request.form.get('name')
+    options = request.form.get('options')
+    if not name or not options:
+        return 'Please select name and option'
+    return render_template('success.html')
