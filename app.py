@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+import csv
 
 app = Flask(__name__)
 
@@ -15,9 +16,17 @@ def registrants():
 
 @app.route('/register', methods=['POST'])
 def register():
-    name = request.form.get('name')
-    options = request.form.get('options')
-    if not name or not options:
+    if not request.form.get('name') or not request.form.get('options'):
         return render_template('failure.html')
-    users.append(f'{name} selected {options}')
-    return redirect('/registrants')
+    file = open('registered.csv', 'a')
+    writer = csv.writer(file)
+    writer.writerow((request.form.get('name'), request.form.get('options')))
+    file.close()
+    return render_template('success.html')
+
+@app.route('/registered')
+def refistered():
+    file = open('registered.csv', 'r')
+    reader = csv.reader(file)
+    users = list(reader)
+    return render_template('registered.html', users=users)

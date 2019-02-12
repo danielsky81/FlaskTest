@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <ul>
+        {% for user in users %}
+        <li>A user named {{ user[0] }} selected the {{ user[1] }} from the list of Options</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
