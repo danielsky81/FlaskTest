@@ -12,4 +12,17 @@
         <input type="submit" value="Register">
     </form>
     <h2><a href="registered">Check who already registered</a></h2>
+
+
+<script>
+    document.querySelector('form').onsubmit = function() {
+        if (!document.querySelector('input').value) {
+            alert('You must provide your name!');
+            return false;
+        } else if (!document.querySelector('select').value) {
+            alert('You must select your option!');
+            return false;
+        }   return true;
+    };
+</script>
 {% endblock %}
