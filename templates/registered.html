@@ -3,7 +3,7 @@
 {% block body %}
     <ul>
         {% for user in users %}
-        <li>A user named {{ user[0] }} selected the {{ user[1] }} from the list of Options</li>
+        <li>A user named <b>{{ user[0] }}</b> selected the <i>{{ user[1] }}</i> from the list of Options</li>
         {% endfor %}
     </ul>
 {% endblock %}

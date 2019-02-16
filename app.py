@@ -30,3 +30,4 @@ def refistered():
     reader = csv.reader(file)
     users = list(reader)
     return render_template('registered.html', users=users)
+    
